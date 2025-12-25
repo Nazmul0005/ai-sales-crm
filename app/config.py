@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     llm_max_tokens: int = Field(default=500, env="LLM_MAX_TOKENS")
     
     # SMTP Configuration
-    smtp_host: str = Field(default="mailhog", env="SMTP_HOST")
+    smtp_host: str = Field(default="127.0.0.1", env="SMTP_HOST")
     smtp_port: int = Field(default=1025, env="SMTP_PORT")
     smtp_username: Optional[str] = Field(default=None, env="SMTP_USERNAME")
     smtp_password: Optional[str] = Field(default=None, env="SMTP_PASSWORD")

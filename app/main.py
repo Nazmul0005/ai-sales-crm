@@ -2,6 +2,7 @@
 FastAPI main application entry point.
 """
 import logging
+import asyncio
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.responses import JSONResponse
@@ -32,13 +33,16 @@ async def lifespan(app: FastAPI):
     # Test email connection
     try:
         email_service = EmailService()
-        connection_ok = await email_service.test_connection()
+        # Add explicit timeout wrapper to prevent hang
+        connection_ok = await asyncio.wait_for(email_service.test_connection(), timeout=5.0)
         if connection_ok:
-            logger.info("✓ SMTP connection test passed")
+            logger.info("SMTP connection test passed")
         else:
-            logger.warning("⚠ SMTP connection test failed - emails may not send")
+            logger.warning("SMTP connection test failed - emails may not send")
+    except asyncio.TimeoutError:
+        logger.warning("SMTP connection test timed out - emails may not send")
     except Exception as e:
-        logger.error(f"✗ SMTP connection test error: {e}")
+        logger.error(f"SMTP connection test error: {e}")
     
     logger.info("Application ready to accept requests")
     logger.info("=" * 80)

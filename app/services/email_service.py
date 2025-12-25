@@ -196,9 +196,10 @@ class EmailService:
             # Try to connect
             async with aiosmtplib.SMTP(
                 hostname=self.smtp_host,
-                port=self.smtp_port
+                port=self.smtp_port,
+                timeout=5.0  # Fail fast if unavailable
             ) as smtp:
-                await smtp.connect()
+                await smtp.connect(timeout=5.0)
                 logger.info("SMTP connection test successful")
                 return True
                 
