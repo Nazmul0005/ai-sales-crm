@@ -14,13 +14,17 @@ This document provides a step-by-step guide and script for recording a video dem
 - Turn camera on yourself OR show the Title Slide / Repository GitHub page.
 
 **Script:**
-> "Hello! Today I'm going to demonstrate an **AI-Powered Sales Campaign CRM**.
+> "Hello! This is my submission for the **Junior AI Engineer** role at **Softstandard Solutions**.
 >
-> In traditional sales, representatives spend hours manually researching leads, guessing their interest level, and writing generic emails that get ignored.
+> I've built a fully functional **AI-Powered Sales Campaign CRM** that meets all the requirements of the assigned task.
 >
-> This project solves that by automating the entire pipeline using **Generative AI**. It takes a raw list of leads, uses a **Groq LLM** to research and score them, generates highly personalized 'buyer personas', and drafts custom outreach emails for each one.
+> In this demo, I'll show you how the system:
+> 1.  Ingests leads from a CSV.
+> 2.  Uses the **Groq LLM** to score and enrich them.
+> 3.  Generates personalized outreach emails.
+> 4.  And produces a comprehensive campaign report.
 >
-> Let me show you how it works under the hood and then run a live campaign."
+> Let's dive into the architecture."
 
 ---
 
@@ -28,7 +32,7 @@ This document provides a step-by-step guide and script for recording a video dem
 
 **Action:**
 - Switch screen share to VS Code.
-- Open [docker-compose.yml](file:///c:/Users/nazmu/Music/prototype2/ai-sales-crm/docker-compose.yml).
+- Open `docker-compose.yml`.
 
 **Script:**
 > "First, a quick look at the tech stack. The entire system is containerized using **Docker**.
@@ -39,7 +43,7 @@ This document provides a step-by-step guide and script for recording a video dem
 > 3.  **LLM Integration**: We're using **Groq**, which gives us incredibly fast inference speeds for real-time processing."
 
 **Action:**
-- Open [.env](file:///c:/Users/nazmu/Music/prototype2/ai-sales-crm/.env).
+- Open `.env`.
 
 **Script:**
 > "Configuration is simple. I just set my `GROQ_API_KEY` here in the environment file, and I can tweak settings like the 'creativity' (temperature) of the AI or the maximum concurrent leads to process."
@@ -111,12 +115,12 @@ This document provides a step-by-step guide and script for recording a video dem
 ## 💻 Part 5: Code Walkthrough (Optional) (4:00 - 4:45)
 
 **Action:**
-- Open [app/services/campaign_orchestrator.py](file:///c:/Users/nazmu/Music/prototype2/ai-sales-crm/app/services/campaign_orchestrator.py).
+- Open `app/services/campaign_orchestrator.py`.
 
 **Script:**
 > "Briefly, let me show you the brain of the operation: the `CampaignOrchestrator`.
 >
-> Here in the [run_campaign](file:///c:/Users/nazmu/Music/prototype2/ai-sales-crm/app/main.py#124-172) method, we handle the entire pipeline asynchronously. We use a semaphore to limit concurrent LLM requests to ensure we don't hit rate limits, while still processing multiple leads in parallel for speed."
+> Here in the `run_campaign` method, we handle the entire pipeline asynchronously. We use a semaphore to limit concurrent LLM requests to ensure we don't hit rate limits, while still processing multiple leads in parallel for speed."
 
 ---
 
