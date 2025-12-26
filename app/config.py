@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     max_concurrent_leads: int = Field(default=5, env="MAX_CONCURRENT_LEADS")
     
     # File Paths
-    input_csv_path: str = Field(default="data/test.csv")
+    input_csv_path: str = Field(default="data/leads_input.csv")
     output_csv_path: str = Field(default="data/leads_output.csv")
     reports_dir: str = Field(default="reports")
     logs_dir: str = Field(default="logs")
