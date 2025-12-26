@@ -43,9 +43,6 @@ venv.bak/
 logs/
 *.log
 
-# Output files (keep structure, ignore generated content)
-data/leads_output.csv
-reports/campaign_summary_*.md
 
 # Docker
 docker-compose.override.yml
