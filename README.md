@@ -16,25 +16,25 @@ A lightweight, AI-powered CRM system that automates lead scoring, enrichment, an
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      FastAPI Application                     │
+│                      FastAPI Application                    │
 ├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
-│  │ CSV Handler  │───▶│ LLM Service  │───▶│Email Service │  │
-│  │              │    │   (Groq)     │    │  (MailHog)   │  │
-│  └──────────────┘    └──────────────┘    └──────────────┘  │
-│         │                    │                    │          │
-│         │                    │                    │          │
-│         ▼                    ▼                    ▼          │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │          Campaign Orchestrator                        │  │
-│  │  (Coordinates entire pipeline with logging)           │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                              │                               │
-│                              ▼                               │
+│                                                             │
+│  ┌──────────────┐    ┌──────────────┐     ┌──────────────┐  │
+│  │ CSV Handler  │──▶ │ LLM Service │───▶ │Email Service │  │
+│  │              │    │   (Groq)     │     │  (MailHog)   │  │
+│  └──────────────┘    └──────────────┘     └──────────────┘  │
+│         │                    │                    │         │
+│         │                    │                    │         │
+│         ▼                    ▼                    ▼         │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │               Campaign Orchestrator                  │   │
+│  │      (Coordinates entire pipeline with logging)      │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                              │                              │
+│                              ▼                              │
 │                    ┌──────────────────┐                     │
-│                    │ Report Service   │                     │
-│                    │ (Markdown + AI)  │                     │
+│                    │  Report Service  │                     │
+│                    │  (Markdown + AI) │                     │
 │                    └──────────────────┘                     │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -52,7 +52,7 @@ A lightweight, AI-powered CRM system that automates lead scoring, enrichment, an
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/Nazmul0005/ai-sales-crm.git
 cd ai-sales-crm
 
 # Copy environment template
@@ -114,27 +114,27 @@ curl http://localhost:8000/campaign/status
 ```
 ai-sales-crm/
 ├── app/
-│   ├── main.py                    # FastAPI application
-│   ├── config.py                  # Configuration & logging
-│   ├── models.py                  # Pydantic models
+│   ├── main.py                      # FastAPI application
+│   ├── config.py                    # Configuration & logging
+│   ├── models.py                    # Pydantic models
 │   └── services/
-│       ├── csv_handler.py         # CSV operations
-│       ├── llm_service.py         # Groq LLM integration
-│       ├── email_service.py       # SMTP email sending
-│       ├── report_service.py      # Report generation
+│       ├── csv_handler.py           # CSV operations
+│       ├── llm_service.py           # Groq LLM integration
+│       ├── email_service.py         # SMTP email sending
+│       ├── report_service.py        # Report generation
 │       └── campaign_orchestrator.py # Main pipeline
-├── data/
-│   ├── leads_input.csv            # Sample input leads
-│   └── leads_output.csv           # Enriched results (generated)
+├── data/ 
+│   ├── leads_input.csv              # Sample input leads
+│   └── leads_output.csv             # Enriched results (generated)
 ├── reports/
-│   └── campaign_summary_*.md      # Generated reports
+│   └── campaign_summary_*.md        # Generated reports
 ├── logs/
-│   └── app.log                    # Application logs
-├── docker-compose.yml             # Docker services
-├── Dockerfile                     # App container
-├── requirements.txt               # Python dependencies
-├── .env                          # Environment variables
-└── README.md                     # This file
+│   └── app.log                      # Application logs
+├── docker-compose.yml               # Docker services
+├── Dockerfile                       # App container
+├── requirements.txt                 # Python dependencies
+├── .env                             # Environment variables
+└── README.md                        # This file
 ```
 
 ## 🔧 Configuration
@@ -144,15 +144,16 @@ ai-sales-crm/
 Modify in `.env`:
 
 ```bash
-LLM_MODEL=mixtral-8x7b-32768      # Groq model (fast & accurate)
-LLM_TEMPERATURE=0.7                # Creativity level (0-1)
-LLM_MAX_TOKENS=500                 # Max response length
-MAX_CONCURRENT_LEADS=5             # Parallel processing limit
+LLM_MODEL=llama-3.3-70b-versatile     # Groq model (fast & accurate)
+LLM_TEMPERATURE=0.7                   # Creativity level (0-1)
+LLM_MAX_TOKENS=500                    # Max response length
+MAX_CONCURRENT_LEADS=5                # Parallel processing limit
 ```
 
 ### Input CSV Format
 
 Required columns:
+
 - `name` (required)
 - `email` (required)
 - `company` (optional)
@@ -168,6 +169,7 @@ See `data/leads_input.csv` for examples.
 ### Enriched CSV (`data/leads_output.csv`)
 
 Contains all original fields plus:
+
 - `score` - Lead quality score (1-10)
 - `priority` - High/Medium/Low
 - `persona` - AI-generated buyer persona
@@ -181,6 +183,7 @@ Contains all original fields plus:
 ### Campaign Report (`reports/campaign_summary_*.md`)
 
 Includes:
+
 - Campaign overview & stats
 - Priority distribution
 - Score distribution chart
@@ -197,7 +200,7 @@ Includes:
 ```bash
 # Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/Scripts/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -238,14 +241,14 @@ tail -f logs/app.log
 
 ## 🎯 API Endpoints
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/` | GET | API information |
-| `/health` | GET | Health check |
-| `/campaign/run` | POST | Execute campaign |
-| `/campaign/status` | GET | Check campaign status |
-| `/test/smtp` | GET | Test email connection |
-| `/docs` | GET | Interactive API docs |
+| Endpoint             | Method | Description           |
+| -------------------- | ------ | --------------------- |
+| `/`                | GET    | API information       |
+| `/health`          | GET    | Health check          |
+| `/campaign/run`    | POST   | Execute campaign      |
+| `/campaign/status` | GET    | Check campaign status |
+| `/test/smtp`       | GET    | Test email connection |
+| `/docs`            | GET    | Interactive API docs  |
 
 ## 🔒 Error Handling
 
@@ -328,6 +331,7 @@ Edit `app/services/llm_service.py` → system prompts in each function
 ### Switch LLM Provider
 
 Replace LangChain's `ChatGroq` with any other provider:
+
 - `ChatOpenAI` for OpenAI
 - `ChatAnthropic` for Claude
 - `ChatOllama` for local models
@@ -375,13 +379,12 @@ MIT License - feel free to use this code for learning and development.
 ## 🙋 Support
 
 For questions or issues:
+
 1. Check the logs: `logs/app.log`
 2. Review troubleshooting section above
 3. Test individual components using API endpoints
 
-## 🎉 Demo Checklist
-
-Before presenting:
+## 🎉 Demo Checklist For Execution
 
 - [ ] `.env` file configured with valid Groq API key
 - [ ] `docker compose up` runs successfully
@@ -394,4 +397,4 @@ Before presenting:
 
 ---
 
-**Built with ❤️ using FastAPI, Groq, and MailHog**
+**Built By Nazmul Islam**

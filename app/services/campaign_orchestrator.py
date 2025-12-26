@@ -329,3 +329,15 @@ class CampaignOrchestrator:
                 logger.debug(f"Lead {lead.name}: {response}")
         
         logger.info("Response simulation complete")
+
+
+
+
+
+import asyncio
+async def test():
+    orchestrator = CampaignOrchestrator()
+    result = await orchestrator.run_campaign()
+    print(result)
+
+asyncio.run(test())
