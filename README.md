@@ -1,6 +1,31 @@
 # 🚀 AI-Powered Sales Campaign CRM
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-teal?logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-Compose-blue?logo=docker)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Groq](https://img.shields.io/badge/Groq-LLM-black?logo=groq)
+![LLM](https://img.shields.io/badge/LLM-Llama--3.3--70B-purple)
+![AI Powered](https://img.shields.io/badge/AI-Powered-orange)
+![SMTP](https://img.shields.io/badge/SMTP-MailHog-yellow)
+![Email Automation](https://img.shields.io/badge/Email-Automation-red)
+![CSV](https://img.shields.io/badge/Data-CSV-lightgrey)
+![Analytics](https://img.shields.io/badge/Campaign-Analytics-brightgreen)
+![Reports](https://img.shields.io/badge/Reports-Markdown-blueviolet)
+![Dockerized](https://img.shields.io/badge/Fully-Dockerized-2496ED?logo=docker)
+![API](https://img.shields.io/badge/API-REST-success)
+![Built By](https://img.shields.io/badge/Built%20By-Nazmul%20Islam-black)
 
 A lightweight, AI-powered CRM system that automates lead scoring, enrichment, and personalized outreach campaigns using Groq LLM and MailHog.
+
+<p align="center">
+  <img src="assets/ai-sales-crm.png" alt="Project Screenshot" width="800"/>
+</p>
+
+<p align="center">
+  <a href="https://drive.google.com/file/d/1QjA6Yd3DfF6Q5blO_6W7-jFjBcu3r4dK/view?usp=sharing">
+    <img src="/video-thumbnail.png" alt="Watch Video" width="700"/>
+  </a>
+</p>
 
 ## ✨ Features
 
